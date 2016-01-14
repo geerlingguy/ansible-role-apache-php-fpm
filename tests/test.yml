@@ -2,6 +2,7 @@
 - hosts: all
 
   vars:
+    php_enablerepo: "remi,remi-php56"
     apache_listen_port_ssl: 443
     apache_create_vhosts: true
     apache_vhosts_filename: "vhosts.conf"
@@ -10,6 +11,8 @@
         documentroot: "/var/www/vhosts/example_com"
 
   roles:
-    - geerlingguy.apache
-    - geerlingguy.php
-    - role_under_test
+    - name: geerlingguy.repo-remi
+      when: ansible_os_family == 'RedHat'
+    - name: geerlingguy.apache
+    - name: geerlingguy.php
+    - name: role_under_test

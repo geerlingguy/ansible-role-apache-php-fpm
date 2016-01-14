@@ -1,15 +1,10 @@
 ---
-- name: Install mod_fastcgi.
-  apt: name=libapache2-mod-fastcgi state=installed
-  notify: restart apache
-
-- name: Ensure fastcgi configuration is present.
-  template:
-    src: fastcgi.conf.j2
-    dest: /etc/apache2/mods-enabled/fastcgi.conf
-    mode: 0644
-  notify: restart apache
-
-- name: Ensure actions module is installed.
-  apache2_module: name=actions state=present
+- name: Enable mod_proxy_fcgi.
+  file:
+    src: "{{ apache_server_root }}/mods-available/{{ item }}"
+    dest: "{{ apache_server_root }}/mods-enabled/{{ item }}"
+    state: link
+  with_items:
+    - proxy.load
+    - proxy_fcgi.load
   notify: restart apache

@@ -1,22 +1,24 @@
-# Ansible Role: Apache FastCGI PHP
+# Ansible Role: Apache PHP-FPM
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-apache-fastcgi-php.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-apache-fastcgi-php)
+[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-apache-php-fpm.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-apache-php-fpm)
 
-An Ansible Role that configures FastCGI for PHP-FPM usage with Apache on RHEL/CentOS and Debian/Ubuntu.
+An Ansible Role that configures Apache for PHP-FPM usage on RHEL/CentOS and Debian/Ubuntu.
 
 ## Requirements
 
 This role is dependent upon `geerlingguy.apache`, and also requires you have PHP running with PHP-FPM somewhere on the server or elsewhere (I usually configure PHP with the `geerlingguy.php` role).
 
+Additionally, this role will only work correctly if you have Apache 2.4.9+ installed; on older versions of Debian/Ubuntu Linux (e.g. 12.04), you can add `ppa:ondrej/apache2` prior to Apache installation to install Apache 2.4, for example:
+
+    - name: Add repository for Apache 2.4 on Ubuntu 12.04.
+      apt_repository: repo='ppa:ondrej/apache2'
+      when: ansible_distribution_version == "12.04"
+
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    apache_enablerepo: ""
-
-The repository to use when installing Apache dependencies (only used on RHEL/CentOS systems). If you'd like later versions of Apache than are available in the OS's core repositories, use a repository like EPEL (which can be installed with the `geerlingguy.repo-epel` role).
-
-TODO.
+TODO
 
 ## Dependencies
 

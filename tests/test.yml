@@ -10,6 +10,11 @@
       - servername: "example.com"
         documentroot: "/var/www/vhosts/example_com"
 
+  pre_tasks:
+    - name: Add repository for Apache 2.4 on Ubuntu 12.04.
+      apt_repository: repo='ppa:ondrej/apache2'
+      when: ansible_distribution_version == "12.04"
+
   roles:
     - role: geerlingguy.repo-remi
       when: ansible_os_family == 'RedHat'

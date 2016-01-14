@@ -11,8 +11,8 @@
         documentroot: "/var/www/vhosts/example_com"
 
   roles:
-    - name: geerlingguy.repo-remi
+    - role: geerlingguy.repo-remi
       when: ansible_os_family == 'RedHat'
-    - name: geerlingguy.apache
-    - name: geerlingguy.php
-    - name: role_under_test
+    - role: geerlingguy.apache
+    - role: geerlingguy.php
+    - role: role_under_test

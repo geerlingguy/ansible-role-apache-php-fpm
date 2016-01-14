@@ -1,0 +1,6 @@
+---
+- include: configure-Debian.yml
+  when: "{{ ansible_os_family }} == 'Debian'"
+
+- include: configure-RedHat.yml
+  when: "{{ ansible_os_family }} == 'RedHat'"

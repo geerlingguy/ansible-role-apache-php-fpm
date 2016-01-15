@@ -1,8 +1,4 @@
 ---
-# Include variables and define needed variables.
-- name: Include OS-specific variables.
-  include_vars: "{{ ansible_os_family }}.yml"
-
 # Configuration tasks.
 - include: configure-Debian.yml
   when: ansible_os_family == 'Debian'

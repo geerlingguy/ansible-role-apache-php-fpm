@@ -14,11 +14,19 @@ Additionally, this role will only work correctly if you have Apache 2.4.9+ insta
       apt_repository: repo='ppa:ondrej/apache2'
       when: ansible_distribution_version == "12.04"
 
+When configuring your Apache virtual hosts, you can add the following line to any vhost definition to enable passthrough to PHP-FPM:
+
+    # If using a TCP port:
+    ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000/var/www/example"
+    
+    # If using a Unix socket:
+    ProxyPassMatch ^/(.*\.php(/.*)?)$ "unix:/var/run/php5-fpm.sock|fcgi://localhost/var/www/example"
+
+For a full usage example with the `geerlingguy.apache` role, see the Example Playbook later in this README.
+
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
-
-TODO
+None.
 
 ## Dependencies
 
@@ -27,6 +35,14 @@ None.
 ## Example Playbook
 
     - hosts: webservers
+    
+      vars:
+        apache_vhosts:
+          - servername: "www.example.com"
+            documentroot: "/var/www/example"
+            extra_parameters: |
+                  ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000/var/www/example"
+    
       roles:
         - { role: geerlingguy.apache }
         - { role: geerlingguy.php }

@@ -15,6 +15,10 @@
       apt_repository: repo='ppa:ondrej/apache2'
       when: ansible_distribution_version == "12.04"
 
+    - name: Update apt cache on Ubuntu 12.04.
+      apt: update_cache=yes
+      when: ansible_distribution_version == "12.04"
+
   roles:
     - role: geerlingguy.repo-remi
       when: ansible_os_family == 'RedHat'

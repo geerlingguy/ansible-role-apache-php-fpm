@@ -36,7 +36,7 @@ script:
 
   # Test role.
   - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml'
-  # TODO - remove this line; I'm just checking for idempotency failure.
+  # TODO - remove these lines; I'm just checking for idempotency failure.
   - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ls -lah /etc/apache2/mods-available'
   - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm apache2 -v'
 

@@ -11,6 +11,7 @@
         documentroot: "/var/www/vhosts/example_com"
 
   pre_tasks:
+    - debug: var=ansible_distribution_version
     - name: Add repository for Apache 2.4 on Ubuntu 12.04.
       apt_repository: repo='ppa:ondrej/apache2'
       when: ansible_distribution_version == "12.04"

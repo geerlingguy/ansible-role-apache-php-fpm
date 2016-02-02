@@ -15,11 +15,11 @@ galaxy_info:
     - 7
   - name: Debian
     versions:
-    - 7
-    - 8
+    - wheezy
+    - jessie
   - name: Ubuntu
     versions:
     - precise
     - trusty
-  categories:
+  galaxy_tags:
     - web

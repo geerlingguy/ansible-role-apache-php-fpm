@@ -46,7 +46,7 @@ None.
       roles:
         - { role: geerlingguy.apache }
         - { role: geerlingguy.php }
-        - { role: geerlingguy.apache-fastcgi-php }
+        - { role: geerlingguy.apache-php-fpm }
 
 ## License
 

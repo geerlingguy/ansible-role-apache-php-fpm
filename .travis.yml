@@ -18,10 +18,6 @@ env:
       version: latest
       init: /sbin/init
       run_opts: ""
-    - repository: geerlingguy/docker-ubuntu1204-ansible
-      version: latest
-      init: /sbin/init
-      run_opts: ""
 
 services:
   - docker

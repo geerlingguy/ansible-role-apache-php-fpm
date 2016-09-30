@@ -44,9 +44,9 @@ None.
                   ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000/var/www/example"
     
       roles:
-        - { role: geerlingguy.apache }
-        - { role: geerlingguy.php }
-        - { role: geerlingguy.apache-fastcgi-php }
+        - geerlingguy.apache
+        - geerlingguy.php
+        - geerlingguy.apache-php-fpm
 
 ## License
 

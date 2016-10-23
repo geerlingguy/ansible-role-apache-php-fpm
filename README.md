@@ -37,6 +37,7 @@ None.
     - hosts: webservers
     
       vars:
+        php_enable_php_fpm: true
         apache_vhosts:
           - servername: "www.example.com"
             documentroot: "/var/www/example"

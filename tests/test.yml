@@ -11,9 +11,40 @@
         documentroot: "/var/www/vhosts/example_com"
 
   pre_tasks:
+    # Ubuntu-specific tasks.
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+
     - name: Add repository for PHP 7.
       apt_repository: repo='ppa:ondrej/php'
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version != '16.04'
+
+    # Debian-specific tasks.
+    - name: Add dependencies for PHP versions (Debian).
+      apt:
+        name: "{{ item }}"
+      with_items:
+        - apt-transport-https
+        - ca-certificates
+      when: ansible_distribution == "Debian"
+
+    - name: Add Ondrej Sury's apt key (Debian).
+      apt_key:
+        url: https://packages.sury.org/php/apt.gpg
+        state: present
+      when: ansible_distribution == "Debian"
+
+    - name: Add Ondrej Sury's repo (Debian).
+      apt_repository:
+        repo: "deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main"
+        state: present
+      register: php_ondrej_debian_repo
+      when: ansible_distribution == "Debian"
+
+    - name: Update apt caches after repo is added (Debian).
+      apt: update_cache=yes
+      when: php_ondrej_debian_repo.changed and (ansible_distribution == "Debian")
 
   roles:
     - role: geerlingguy.repo-remi

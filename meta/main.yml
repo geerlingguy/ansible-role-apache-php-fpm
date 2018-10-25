@@ -28,4 +28,5 @@ galaxy_info:
     - apache
     - php
     - cgi
-    - php-fpm
+    - php
+    - fpm

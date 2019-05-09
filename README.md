@@ -27,14 +27,6 @@ RedHat/CentOS 6 installs Apache 2.2, and is much harder to get configured with F
   - [Apache 2.2 + mod_fastcgi](http://stackoverflow.com/a/21409702/100134)
   - [Apache 2.4 + mod_proxy_fcgi](http://unix.stackexchange.com/a/138903/16194
 
-### Ubuntu < 14.04
-
-This role will only work correctly if you have Apache 2.4.9+ installed; on older versions of Debian/Ubuntu Linux (e.g. 12.04), you can add `ppa:ondrej/apache2` prior to Apache installation to install Apache 2.4, for example:
-
-    - name: Add repository for Apache 2.4 on Ubuntu 12.04.
-      apt_repository: repo='ppa:ondrej/apache2'
-      when: ansible_distribution_version == "12.04"
-
 ## Role Variables
 
 None.

@@ -4,7 +4,6 @@
   become: true
 
   vars:
-    php_enablerepo: "remi,remi-php56"
     apache_listen_port_ssl: 443
     apache_create_vhosts: true
     apache_vhosts_filename: "vhosts.conf"
@@ -12,16 +11,10 @@
       - servername: "example.com"
         documentroot: "/var/www/vhosts/example_com"
 
-  pre_tasks:
-    - name: Add repository for PHP 7.
-      apt_repository: repo='ppa:ondrej/php'
-      when:
-        - ansible_distribution == 'Ubuntu'
-        - ansible_distribution_version != '16.04'
-
   roles:
     - role: geerlingguy.repo-remi
       when: ansible_os_family == 'RedHat'
     - role: geerlingguy.apache
+    - role: geerlingguy.php-versions
     - role: geerlingguy.php
     - role: geerlingguy.apache-php-fpm

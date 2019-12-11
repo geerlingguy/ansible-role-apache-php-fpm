@@ -25,7 +25,7 @@ RedHat/CentOS 7 automatically installs and enables mod_proxy_fcgi by default.
 RedHat/CentOS 6 installs Apache 2.2, and is much harder to get configured with FastCGI, but here are two guides in case you need to support this use case:
 
   - [Apache 2.2 + mod_fastcgi](http://stackoverflow.com/a/21409702/100134)
-  - [Apache 2.4 + mod_proxy_fcgi](http://unix.stackexchange.com/a/138903/16194
+  - [Apache 2.4 + mod_proxy_fcgi](http://unix.stackexchange.com/a/138903/16194)
 
 ## Role Variables
 

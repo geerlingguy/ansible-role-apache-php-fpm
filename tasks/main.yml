@@ -5,6 +5,7 @@
     src: "{{ apache_server_root }}/mods-available/{{ item }}"
     dest: "{{ apache_server_root }}/mods-enabled/{{ item }}"
     state: link
+    mode: 0644
   with_items:
     - proxy.load
     - proxy_fcgi.load

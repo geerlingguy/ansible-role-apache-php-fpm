@@ -1,6 +1,6 @@
 # Ansible Role: Apache PHP-FPM
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-apache-php-fpm.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-apache-php-fpm)
+[![Build Status](https://travis-ci.com/geerlingguy/ansible-role-apache-php-fpm.svg?branch=master)](https://travis-ci.com/geerlingguy/ansible-role-apache-php-fpm)
 
 An Ansible Role that configures Apache for PHP-FPM usage on RHEL/CentOS and Debian/Ubuntu.
 

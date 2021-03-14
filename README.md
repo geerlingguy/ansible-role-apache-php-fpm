@@ -18,9 +18,9 @@ When configuring your Apache virtual hosts, you can add the following line to an
 
 For a full usage example with the `geerlingguy.apache` role, see the Example Playbook later in this README.
 
-### RedHat 6 and 7
+### RedHat/CentOS
 
-RedHat/CentOS 7 automatically installs and enables mod_proxy_fcgi by default.
+RedHat/CentOS 7 and 8 automatically install and enables mod_proxy_fcgi by default.
 
 RedHat/CentOS 6 installs Apache 2.2, and is much harder to get configured with FastCGI, but here are two guides in case you need to support this use case:
 
